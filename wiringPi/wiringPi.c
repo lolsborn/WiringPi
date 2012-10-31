@@ -497,6 +497,11 @@ int piBoardRev (void)
  *********************************************************************************
  */
 
+void _pinMode (int pin, int mode)
+{
+  pinMode(pin, mode);
+}
+
 void pinModeGpio (int pin, int mode)
 {
   int fSel, shift, alt ;
@@ -572,6 +577,11 @@ void pinModeSys (int pin, int mode)
  *********************************************************************************
  */
 
+void _pwmSetMode(int mode)
+{
+  pwmSetMode(mode);
+}
+
 void pwmSetModeWPi (int mode)
 {
   if (mode == PWM_MODE_MS)
@@ -585,6 +595,11 @@ void pwmSetModeSys (int mode)
   return ;
 }
 
+
+void _pwmSetRange(unsigned int range)
+{
+  pwmSetRange(range);
+}
 
 void pwmSetRangeWPi (unsigned int range)
 {
@@ -604,6 +619,10 @@ void pwmSetRangeSys (unsigned int range)
  *	after further study of the manual and testing with a 'scope
  *********************************************************************************
  */
+
+ void _pwmSetClock(int divisor) {
+  pwmSetClock(divisor);
+ }
 
 void pwmSetClockWPi (int divisor)
 {
@@ -670,6 +689,11 @@ void pinEnableED01Pi (int pin)
  *********************************************************************************
  */
 
+extern void _digitalWrite (int pin, int value)
+{
+  digitalWrite(pin, value);
+}
+
 void digitalWriteWPi (int pin, int value)
 {
   pin = pinToGpio [pin & 63] ;
@@ -730,12 +754,21 @@ void pwmWriteSys (int pin, int value)
   return ;
 }
 
+void _pwmWrite (int pin, int value)
+{
+  pwmWrite(pin, value);
+}
 
 /*
  * setPadDrive:
  *	Set the PAD driver value
  *********************************************************************************
  */
+
+void _setPadDrive(int group, int value)
+{
+  setPadDrive(group, value);
+}
 
 void setPadDriveWPi (int group, int value)
 {
@@ -769,6 +802,10 @@ void setPadDriveSys (int group, int value)
  *	Read the value of a given Pin, returning HIGH or LOW
  *********************************************************************************
  */
+
+ int _digitalRead(int pin) {
+  return digitalRead(pin);
+ }
 
 int digitalReadWPi (int pin)
 {
@@ -813,6 +850,11 @@ int digitalReadSys (int pin)
  *	here though.
  *********************************************************************************
  */
+
+void _pullUpDnControl (int pin, int pud)
+{
+  pullUpDnControl(pin, pud);
+}
 
 void pullUpDnControlGpio (int pin, int pud)
 {
@@ -917,6 +959,11 @@ void delay (unsigned int howLong)
  *	wastefull, however we've no real choice )-:
  *********************************************************************************
  */
+
+ void _delayMicroseconds(unsigned int howLong)
+{
+  delayMicroseconds(howLong);
+}
 
 void delayMicrosecondsSys (unsigned int howLong)
 {

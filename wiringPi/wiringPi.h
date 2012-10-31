@@ -78,9 +78,21 @@ extern void (*pwmSetMode)        (int mode) ;
 extern void (*pwmSetRange)       (unsigned int range) ;
 extern void (*pwmSetClock)       (int divisor) ;
 
+extern void _pinMode             (int pin, int mode) ;
+extern void _pullUpDnControl     (int pin, int pud) ;
+extern void _digitalWrite        (int pin, int value) ;
+extern void _pwmWrite            (int pin, int value) ;
+extern void _setPadDrive         (int group, int value) ;
+extern int  _digitalRead         (int pin) ;
+extern void _delayMicroseconds   (unsigned int howLong) ;
+extern void _pwmSetMode          (int mode) ;
+extern void _pwmSetRange         (unsigned int range) ;
+extern void _pwmSetClock         (int divisor) ;
+
 // Interrupts
 
 extern int  (*waitForInterrupt) (int pin, int mS) ;
+extern int  _waitForInterrupt   (int pin, int mS) ;
 
 // Threads
 
